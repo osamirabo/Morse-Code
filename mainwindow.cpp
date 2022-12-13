@@ -12,11 +12,11 @@ MainWindow::MainWindow(QWidget *parent)
     initializeMorseCodeTable();
 
     //signals and slots connection
-    connect(ui->textEditInput, SIGNAL(textChanged()), this,  SLOT(reactToInputTextValueChanged()));
-    connect(this, SIGNAL(outputTextValueChanged(QString)), ui->textEditOutput,  SLOT(setPlainText(QString)));
-    connect(ui->clearPushButton, SIGNAL(clicked(bool)), this,  SLOT(reactToClearBtn()));
-    connect(ui->text2morseBtn, SIGNAL(toggled(bool)), this,  SLOT(reactToToggledText2MorsBtn()));
-    connect(ui->morse2textBtn, SIGNAL(toggled(bool)), this,  SLOT(reactToToggledMors2TextBtn()));
+    connect(ui->textEditInput, &QTextEdit::textChanged, this,  &MainWindow::reactToInputTextValueChanged);
+    connect(this, &MainWindow::outputTextValueChanged, ui->textEditOutput,  &QTextEdit::setPlainText);
+    connect(ui->clearPushButton, &QPushButton::clicked, this,  &MainWindow::reactToClearBtn);
+    connect(ui->text2morseBtn, &QRadioButton::toggled, this,  &MainWindow::reactToToggledText2MorsBtn);
+    connect(ui->morse2textBtn, &QRadioButton::toggled, this,  &MainWindow::reactToToggledMors2TextBtn);
 }
 
 void MainWindow::initializeMorseCodeTable()
